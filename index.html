@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSR26 · La ola del plástico</title>
+<meta name="description" content="El plástico es el mayor problema ambiental de nuestra generación. Y la mayor oportunidad. Créditos de plástico certificados CSR26 con Corsair Group.">
+<link rel="icon" href="img/logo.png">
+<link rel="apple-touch-icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ====== CONFIG: cambia aquí tus enlaces ====== */
+  /* Google Calendar y presentación del lunes: busca CAL_URL y MEET_URL más abajo */
+
+  :root{
+    --bg:#fcfcfc; --bg-2:#f8f8f8; --line:#ebebeb; --ink:#131313; --muted:#8d8d8d; --muted-2:#4d4d4d;
+    --dark:#141414; --dark-2:#1a1a1a; --blue:#0f5efe; --blue-2:#0d48c8;
+    --serif:"Instrument Serif", "Ivy Presto Display", ui-serif, Georgia, serif;
+    --sans:-apple-system, "SF Pro Display", Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+    --r:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  section{padding:120px 0}
+
+  /* ---- tipografía estilo Axis ---- */
+  h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.1}
+  h1{font-size:clamp(44px,8vw,104px)}
+  h2{font-size:clamp(36px,5.2vw,68px)}
+  h3{font-size:28px}
+  .lead{color:var(--muted);font-size:clamp(16px,1.5vw,20px);max-width:620px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--muted-2);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-bottom:24px}
+  .eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(15,94,254,.15)}
+  .center{text-align:center}.center .lead{margin:20px auto 0}
+
+  /* EL EFECTO AZUL (idéntico al de axisgroup) */
+  .accent{font-style:italic;color:transparent;-webkit-text-fill-color:transparent;
+    background-image:linear-gradient(114.5deg,#0f5efe 14.91%,#0d48c8 27.62%,#2b61d9 38.18%,#dde7ff 48.09%,#0b3aa7 59.48%,#050526 84.48%);
+    -webkit-background-clip:text;background-clip:text;
+    /* padding extra para que la cursiva (g, p, d…) no se corte por abajo/izquierda */
+    padding:0 .14em .18em .1em;margin:0 -.04em -.18em -.1em;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+    background-size:300% 100%;animation:pan 2s linear infinite alternate}
+  .dark .accent{background-image:linear-gradient(114.5deg,#0f5efe 14.91%,#3b7bff 30%,#dde7ff 48.09%,#5b8cff 62%,#0f5efe 84.48%)}
+  @keyframes pan{0%{background-position:100%}to{background-position:0%}}
+
+  /* ---- botones ---- */
+  .btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font-weight:500;font-size:15px;transition:transform .2s,background .2s,box-shadow .2s;cursor:pointer;border:0}
+  .btn-dark{background:var(--ink);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 8px 24px rgba(0,0,0,.12)}
+  .btn-dark:hover{transform:translateY(-2px);background:#000}
+  .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{transform:translateY(-2px)}
+  .btn-blue{background:var(--blue);color:#fff;box-shadow:0 10px 30px rgba(15,94,254,.35)}
+  .btn-blue:hover{transform:translateY(-2px);background:var(--blue-2)}
+  .btn svg{width:16px;height:16px}
+
+  /* ---- nav ---- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(252,252,252,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+  nav.scrolled{border-color:var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{font-family:var(--serif);font-size:26px;display:flex;align-items:center;gap:10px}
+  .logo img{width:36px;height:36px;object-fit:contain}
+  .links{display:flex;gap:32px;font-size:14px;color:var(--muted-2)}
+  .links a:hover{color:var(--ink)}
+  nav .btn{height:42px;padding:0 20px;font-size:14px}
+
+  /* ---- hero ---- */
+  .hero{padding:96px 0 80px;text-align:center;position:relative}
+  .hero::before{content:"";position:absolute;inset:-200px 0 auto;height:700px;z-index:-1;
+    background:radial-gradient(600px 300px at 50% 30%,rgba(15,94,254,.10),transparent 70%);}
+  .hero .lead{margin:20px auto 0;font-size:clamp(19px,2vw,24px);line-height:1.4}
+  .hero .video{margin-top:40px}
+  .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  /* ---- video ---- */
+  .video{margin:64px auto 0;max-width:1040px;aspect-ratio:16/9;border-radius:28px;overflow:hidden;position:relative;
+    background:linear-gradient(160deg,rgba(20,20,20,.7),rgba(5,5,38,.85) 70%,rgba(11,58,167,.7)),url(img/Record-global-growth.jpg) center/cover;box-shadow:0 40px 100px -30px rgba(5,5,38,.45);border:1px solid #222}
+  .video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video .ph{position:absolute;inset:0;display:grid;place-items:center;color:#fff;cursor:pointer}
+  .video .ph::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(15,94,254,.35),transparent 55%)}
+  .play{position:relative;z-index:1;width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;transition:transform .3s}
+  .video .ph:hover .play{transform:scale(1.08)}
+  .play svg{width:30px;margin-left:5px}
+  .video .tag{position:absolute;left:24px;bottom:22px;z-index:1;font-size:13px;color:#cfd6e6}
+  .video .tag b{font-family:var(--serif);font-weight:400;font-size:22px;color:#fff;display:block}
+
+  /* ---- stats ---- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r);background:#fff;margin-top:64px;overflow:hidden}
+  .stat{padding:36px 28px;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:0}
+  .stat .n{font-family:var(--serif);font-size:clamp(44px,5vw,64px);line-height:1}
+  .stat p{color:var(--muted);font-size:14px;margin-top:12px}
+
+  /* ---- grid cards ---- */
+  .head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:56px;flex-wrap:wrap}
+  .head .lead{max-width:440px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .card{background:var(--bg-2);border:1px solid var(--line);border-radius:var(--r);padding:32px;transition:transform .3s,box-shadow .3s,background .3s}
+  .card:hover{transform:translateY(-4px);background:#fff;box-shadow:0 20px 50px -20px rgba(0,0,0,.15)}
+  .card .num{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:40px;display:block}
+  .card h3{margin-bottom:10px}
+  .card p{color:var(--muted);font-size:15px}
+
+  /* ---- pirólisis flow ---- */
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:48px}
+  .step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 18px;position:relative;font-size:14px}
+  .step b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;margin-bottom:4px}
+  .step span{color:var(--muted)}
+  .step:not(:last-child)::after{content:"→";position:absolute;right:-14px;top:50%;transform:translateY(-50%);z-index:1;width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;font-size:11px;display:grid;place-items:center}
+  .quote{font-family:var(--serif);font-size:clamp(26px,3vw,38px);text-align:center;margin-top:48px}
+
+  /* ---- trust badges ---- */
+  .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+  .badge{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff;display:flex;gap:14px;align-items:flex-start}
+  .badge .ck{flex:none;width:28px;height:28px;border-radius:50%;background:rgba(15,94,254,.1);color:var(--blue);display:grid;place-items:center;font-size:14px;font-weight:700}
+  .badge b{display:block;font-size:16px}
+  .badge span{color:var(--muted);font-size:13px}
+
+  /* ---- dark sections ---- */
+  .dark{background:var(--dark);color:#fff}
+  .dark .lead,.dark .card p{color:#9a9a9a}
+  .dark .eyebrow{background:#1f1f1f;border-color:#2b2c2c;color:#cfcfcf}
+  .dark .card{background:var(--dark-2);border-color:#2b2c2c}
+  .dark .card:hover{background:#202020}
+
+  /* chart */
+  .chart{background:var(--dark-2);border:1px solid #2b2c2c;border-radius:var(--r);padding:32px;display:grid;grid-template-columns:1fr 280px;gap:32px;align-items:center}
+  .chart svg{width:100%;height:auto;overflow:visible}
+  .kpis{display:grid;gap:24px}
+  .kpis .n{font-family:var(--serif);font-size:52px;line-height:1}
+  .kpis p{color:#9a9a9a;font-size:14px}
+  #cchart{touch-action:pan-y;cursor:crosshair}
+  #cchart .tip{opacity:0;transition:opacity .2s}
+  #cchart.hover .tip{opacity:1}
+  .replay{margin-top:16px;background:none;border:1px solid #2b2c2c;color:#cfcfcf;border-radius:999px;padding:8px 16px;font:500 13px var(--sans);cursor:pointer}
+  .replay:hover{border-color:#0f5efe;color:#fff}
+  .chart small{display:block;color:#717171;font-size:12px;margin-top:8px}
+
+  /* galería plantas */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:12px;margin-top:48px}
+  .gallery figure{position:relative;border-radius:18px;overflow:hidden;background:#ddd}
+  .gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.165,.84,.44,1)}
+  .gallery figure:hover img{transform:scale(1.06)}
+  .gallery figcaption{position:absolute;left:12px;bottom:12px;background:rgba(10,10,20,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:12px;padding:6px 12px;border-radius:999px}
+  .gallery .w2{grid-column:span 2}.gallery .h2{grid-row:span 2}
+
+  /* regulaciones */
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:40px}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:12px 22px;font-size:15px;display:flex;gap:10px;align-items:center}
+  .chip i{width:8px;height:8px;border-radius:50%;background:var(--blue)}
+  .chip.soon i{background:#ffcc00}
+
+  /* timeline */
+  .tl{margin-top:56px;display:grid;gap:16px}
+  .row{display:grid;grid-template-columns:140px 1fr;gap:24px;align-items:center}
+  .row .lbl{font-family:var(--serif);font-size:26px}
+  .bar{height:64px;border-radius:14px;position:relative;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
+  .bar .fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:14px;transition:width 2s cubic-bezier(.165,.84,.44,1);display:flex;align-items:center;padding:0 18px;color:#fff;font-size:14px;white-space:nowrap}
+  .in .bar.c .fill{width:100%;background:linear-gradient(90deg,#4d4d4d,#141414)}
+  .in .bar.p .fill{width:38%;background:linear-gradient(90deg,#0f5efe,#050526)}
+  .bar .here{position:absolute;left:38%;top:-1px;bottom:-1px;border-left:2px dashed var(--blue)}
+  .tl small{color:var(--muted);font-size:13px;display:block;margin-top:8px;padding-left:164px}
+
+  /* CSR26 */
+  .eq{display:flex;align-items:center;justify-content:center;gap:clamp(16px,4vw,48px);margin:56px 0;flex-wrap:wrap}
+  .eq .box{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px 40px;text-align:center;min-width:220px}
+  .eq .box .n{font-family:var(--serif);font-size:72px;line-height:1}
+  .eq .box p{color:var(--muted);font-size:14px;margin-top:8px}
+  .eq .op{font-family:var(--serif);font-size:56px;color:var(--muted)}
+  .eq .box.blue{background:linear-gradient(160deg,#0f5efe,#050526);color:#fff;border:0}
+  .eq .box.blue p{color:#c9d6ff}
+  .coins{display:grid;grid-template-columns:repeat(5,40px);gap:8px;justify-content:center;margin-bottom:4px}
+  .coins img{width:40px;height:40px;object-fit:contain;transform:scale(0);transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+  .in .coins img{transform:scale(1)}
+  .coins img:nth-child(1){transition-delay:.1s}.coins img:nth-child(2){transition-delay:.18s}.coins img:nth-child(3){transition-delay:.26s}.coins img:nth-child(4){transition-delay:.34s}.coins img:nth-child(5){transition-delay:.42s}
+  .coins img:nth-child(6){transition-delay:.5s}.coins img:nth-child(7){transition-delay:.58s}.coins img:nth-child(8){transition-delay:.66s}.coins img:nth-child(9){transition-delay:.74s}.coins img:nth-child(10){transition-delay:.82s}
+  .bc{width:150px;height:80px;display:block;margin:0 auto 4px}
+
+  /* marquee */
+  .marquee{overflow:hidden;border-block:1px solid var(--line);padding:28px 0;margin-top:56px;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+  .track{display:flex;gap:64px;width:max-content;animation:scroll 40s linear infinite}
+  .track span{font-family:var(--serif);font-size:34px;color:#9a9a9a;white-space:nowrap}
+  .track span em{color:var(--blue);font-style:normal;margin-left:64px}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* coca-cola */
+  .big{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+  .big .card{padding:44px}
+  .big .n{font-family:var(--serif);font-size:clamp(56px,7vw,96px);line-height:1;margin:8px 0 12px}
+  .meter{height:10px;border-radius:999px;background:#2b2c2c;margin-top:28px;overflow:hidden}
+  .meter i{display:block;height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#0f5efe,#dde7ff);transition:width 2s .3s}
+  .in .meter i.a{width:100%}.in .meter i.b{width:14%}
+
+  /* sectores tabs */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:48px 0 24px}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 20px;font:500 14px var(--sans);cursor:pointer;color:var(--muted-2);transition:.2s}
+  .tab[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .panel{display:none;grid-template-columns:1.2fr 1fr;gap:16px}
+  .panel.on{display:grid;animation:fade .5s}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}}
+  .panel .card{padding:44px}
+  .panel h3{font-size:clamp(30px,3.4vw,44px);margin-bottom:16px}
+  .panel ul{list-style:none;display:grid;gap:14px;margin:8px 0 32px}
+  .panel li{display:flex;gap:12px;color:var(--muted-2);font-size:15px}
+  .panel li::before{content:"✓";color:var(--blue);font-weight:700}
+  .panel .side{background:linear-gradient(160deg,#141414,#050526 75%,#0b3aa7);color:#fff;border:0;display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
+  .panel .side .q{font-family:var(--serif);font-size:clamp(28px,3vw,40px);line-height:1.15}
+  .panel .side small{color:#9a9a9a;display:block;margin-top:16px}
+
+  /* final */
+  .final{text-align:center;padding:160px 0;position:relative;overflow:hidden}
+  .final::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 360px at 50% 100%,rgba(15,94,254,.35),transparent 70%)}
+  .final .wrap{position:relative}
+  .final h2{font-size:clamp(44px,7.5vw,104px)}
+  .final .lead{margin:28px auto 44px}
+
+  footer{background:var(--dark);color:#717171;font-size:13px;border-top:1px solid #2b2c2c;padding:40px 0}
+  footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer p{max-width:720px}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.165,.84,.44,1),transform .9s cubic-bezier(.165,.84,.44,1)}
+  .rv.in{opacity:1;transform:none}
+
+  @media (max-width:960px){
+    section{padding:88px 0}
+    .links{display:none}
+    .stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+    .cards,.trust{grid-template-columns:1fr 1fr}
+    .flow{gap:6px;margin-top:32px}
+    .step{padding:14px 4px;text-align:center;border-radius:12px;display:grid;place-items:center}
+    .step b{font-size:15px;margin:0;line-height:1.1}
+    .step span{display:none}
+    .step:not(:last-child)::after{right:-10px;width:14px;height:14px;font-size:8px}
+    .chart,.big,.panel.on{grid-template-columns:1fr}
+  }
+  @media (max-width:600px){
+    .wrap{padding:0 16px}
+    .cards,.trust{grid-template-columns:1fr}
+    .stat{padding:28px 20px}
+    .row{grid-template-columns:1fr;gap:8px}.tl small{padding-left:0}
+    .eq .box{min-width:0;width:100%}
+    .video{border-radius:18px}
+    nav .wrap{height:60px}
+    nav .btn{height:38px;padding:0 16px;font-size:13px}
+    .logo{font-size:22px}.logo img{width:30px;height:30px}
+    .hero{padding:28px 0 56px}
+    .hero::before{inset:-60px 0 auto;height:420px}
+    .hero .eyebrow{font-size:12px;margin-bottom:18px}
+    .gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:32px -16px 0;padding:0 16px;scrollbar-width:none}
+    .gallery::-webkit-scrollbar{display:none}
+    .gallery figure{flex:0 0 80%;height:280px;scroll-snap-align:center}
+    .chart{padding:20px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap">
+  <a href="#" class="logo"><img src="img/logo.png" alt="">CSR26</a>
+  <div class="links">
+    <a href="#video">Vídeo</a><a href="#corsair">Corsair</a><a href="#mercado">Mercado</a><a href="#csr26">CSR26</a><a href="#sectores">Para ti</a>
+  </div>
+  <a href="#sectores" class="btn btn-dark">Agenda una llamada</a>
+</div></nav>
+
+<!-- HERO + VIDEO -->
+<header class="hero" id="video"><div class="wrap">
+  <h1 class="rv">El mayor problema<br>del planeta es la próxima<br><span class="accent">gran oportunidad</span></h1>
+  <p class="lead rv">Donde hay un problema de esta magnitud, <b style="color:var(--ink);font-weight:500">siempre existe una oportunidad igual de grande.</b></p>
+
+  <!-- 🎬 VÍDEO: sustituye VIDEO_SRC por tu MP4, o pega un <iframe> de YouTube/Vimeo dentro de .video -->
+  <div class="video rv" id="v" data-src="video.mp4">
+    <div class="ph" onclick="playVideo()">
+      <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></div>
+      <div class="tag"><b>La ola del plástico</b>Corsair Group · CSR26</div>
+    </div>
+  </div>
+
+  <div class="cta-row rv" style="margin-top:32px">
+    <a href="#sectores" class="btn btn-dark">Encuentra tu lugar <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+
+  <div class="stats rv">
+    <div class="stat"><div class="n" data-count="9">9%</div><p>de todo el plástico producido en la historia se ha reciclado de verdad.</p></div>
+    <div class="stat"><div class="n">100k</div><p>animales marinos mueren cada año por el plástico.</p></div>
+    <div class="stat"><div class="n">1.000</div><p>años puede tardar el plástico en desaparecer.</p></div>
+    <div class="stat"><div class="n">×3</div><p>la producción mundial de plástico antes de 2060.</p></div>
+  </div>
+</div></header>
+
+<!-- CORSAIR -->
+<section id="corsair" style="background:var(--bg-2);border-block:1px solid var(--line)"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow rv"><i></i>Quién está detrás</span>
+    <h2 class="rv">Corsair Group.<br>No es un proyecto. <span class="accent">Es una operación real.</span></h2></div>
+    <p class="lead rv">Fundada en 2020. Plantas operativas en Asia y en Europa al mismo tiempo, transformando plástico en aceite de pirólisis. Ya en marcha. Ya facturando.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card rv"><span class="num">01 — Reciclaje químico</span><h3>Pirólisis</h3><p>Descompone el plástico a nivel molecular con calor controlado y sin oxígeno. El reciclaje mecánico degrada; el químico regenera.</p></div>
+    <div class="card rv"><span class="num">02 — Presencia global</span><h3>Asia + Europa</h3><p>Plantas construidas y operando hoy, con equipo técnico propio y procesos certificados.</p></div>
+    <div class="card rv"><span class="num">03 — Cliente final</span><h3>Vende a Shell</h3><p>Acuerdos directos con una de las compañías energéticas más grandes del planeta para la compra del aceite de pirólisis.</p></div>
+  </div>
+
+
+  <div class="gallery rv">
+    <figure class="w2 h2"><img src="img/Record-global-growth.jpg" alt="Reactores de pirólisis de Corsair" loading="lazy"><figcaption>Reactores de pirólisis</figcaption></figure>
+    <figure><img src="img/The-Begining.jpg" alt="Vista aérea de una planta de Corsair" loading="lazy"><figcaption>Planta operativa</figcaption></figure>
+    <figure><img src="img/Global-expansion-and-technology-alignment.jpg" alt="Instalación de un reactor" loading="lazy"><figcaption>Instalación de reactor</figcaption></figure>
+    <figure><img src="img/International-shipments-begin.jpg" alt="Equipo Corsair con barriles de aceite de pirólisis" loading="lazy"><figcaption>Aceite listo para envío</figcaption></figure>
+    <figure><img src="img/Pyrolysis-recycling-and-Pyrolysis-oil-2.jpg" alt="Aceite de pirólisis" loading="lazy"><figcaption>Aceite de pirólisis</figcaption></figure>
+    <figure class="w2"><img src="img/Modular-and-well-equipped.jpg" alt="Vista aérea de instalaciones industriales" loading="lazy"><figcaption>Instalaciones en Europa</figcaption></figure>
+    <figure class="w2"><img src="img/Catching-plastic-initiative-thai-fishers.jpg" alt="Pescadores recogiendo plástico del mar" loading="lazy"><figcaption>Recogida de plástico con pescadores</figcaption></figure>
+    <figure class="w2"><img src="img/Rapidly-Emerging-As-A-Global-Leader.jpg" alt="Corsair Learning Center" loading="lazy"><figcaption>Corsair Learning Center</figcaption></figure>
+  </div>
+
+  <div class="trust" style="margin-top:16px">
+    <div class="badge rv"><span class="ck">✓</span><div><b>ISCC</b><span>Certificación de sostenibilidad</span></div></div>
+    <div class="badge rv"><span class="ck">✓</span><div><b>Control Union</b><span>Auditoría independiente</span></div></div>
+    <div class="badge rv"><span class="ck">✓</span><div><b>Naciones Unidas</b><span>Alineado con ODS 12 · 13 · 14</span></div></div>
+    <div class="badge rv"><span class="ck">✓</span><div><b>Shell</b><span>Comprador directo del aceite</span></div></div>
+  </div>
+</div></section>
+
+<!-- MERCADO CARBONO -->
+<section class="dark" id="mercado"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow rv"><i></i>Mira hacia atrás</span>
+    <h2 class="rv">El carbono ya lo hizo.<br><span class="accent">De 4€ a 88€.</span></h2></div>
+    <p class="lead rv">El mercado de créditos de carbono nació en 1997 y hoy mueve 800.000 millones de dólares al año. Quien entró temprano, lo vio multiplicarse.</p>
+  </div>
+  <div class="chart rv">
+    <div>
+    <svg id="cchart" viewBox="0 0 600 300" aria-label="Precio del crédito de carbono 2017-2026: de 4 a 88 euros">
+      <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0f5efe" stop-opacity=".45"/><stop offset="1" stop-color="#0f5efe" stop-opacity="0"/></linearGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="4"/></filter></defs>
+      <g stroke="#2b2c2c"><line x1="0" y1="260" x2="600" y2="260"/><line x1="0" y1="200" x2="600" y2="200" stroke-dasharray="3 5"/><line x1="0" y1="140" x2="600" y2="140" stroke-dasharray="3 5"/><line x1="0" y1="80" x2="600" y2="80" stroke-dasharray="3 5"/><line x1="0" y1="20" x2="600" y2="20" stroke-dasharray="3 5"/></g>
+      <g fill="#4d4d4d" font-size="11" font-family="Inter,sans-serif" text-anchor="end"><text x="596" y="196">25€</text><text x="596" y="136">50€</text><text x="596" y="76">75€</text></g>
+      <path id="carea" fill="url(#g)"/>
+      <path id="cline" fill="none" stroke="#0f5efe" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle id="chalo" r="14" fill="#0f5efe" opacity=".5" filter="url(#glow)"/>
+      <circle id="chead" r="6" fill="#fff" stroke="#0f5efe" stroke-width="3"/>
+      <g id="cyears" fill="#717171" font-size="12" font-family="Inter,sans-serif" text-anchor="middle"></g>
+      <g class="tip"><line id="tline" y1="20" y2="260" stroke="#4d4d4d" stroke-dasharray="3 3"/><circle id="tdot" r="5" fill="#fff"/>
+        <rect id="tbox" width="86" height="44" rx="10" fill="#fff"/><text id="ty" font-size="11" fill="#717171" font-family="Inter,sans-serif"></text><text id="tv" font-size="18" fill="#131313" font-family="Inter,sans-serif" font-weight="600"></text></g>
+    </svg>
+    <button class="replay" id="creplay">↻ Repetir animación</button>
+    <small>Precio aproximado del crédito de carbono (EU ETS), €/tonelada.</small>
+    </div>
+    <div class="kpis">
+      <div><div class="n accent" id="cprice">4€</div><p id="cyear">precio en 2017</p></div>
+      <div><div class="n">+2.100%</div><p>de subida en nueve años</p></div>
+      <div><div class="n">800.000M$</div><p>mueve el mercado cada año</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- REGULACIÓN + TIMELINE -->
+<section><div class="wrap center">
+  <span class="eyebrow rv"><i></i>Está pasando otra vez</span>
+  <h2 class="rv">Lo que hoy es voluntario,<br><span class="accent">mañana será obligatorio.</span></h2>
+  <p class="lead rv">Los gobiernos se mueven en la misma dirección. Y cuando la ley obliga, la demanda se dispara — y nadie puede detenerla.</p>
+  <div class="chips rv">
+    <span class="chip"><i></i>Unión Europea</span><span class="chip"><i></i>Filipinas</span><span class="chip"><i></i>Indonesia</span>
+    <span class="chip"><i></i>California</span><span class="chip"><i></i>India</span><span class="chip soon"><i></i>Próximos países</span>
+  </div>
+
+  <div class="tl rv" style="text-align:left">
+    <div class="row"><div class="lbl">Carbono</div><div class="bar c"><div class="fill">1997 · voluntario → 2017 · el precio se dispara</div></div></div>
+    <div class="row"><div class="lbl accent">Plástico</div><div class="bar p"><div class="fill">2020 → hoy</div><span class="here"></span></div></div>
+    <small>El mismo camino, mucho más rápido. <b style="color:var(--blue)">Estamos aquí:</b> el momento en el que todo empieza a moverse.</small>
+  </div>
+</div></section>
+
+<!-- CSR26 -->
+<section id="csr26" style="background:var(--bg-2);border-block:1px solid var(--line)"><div class="wrap center">
+  <span class="eyebrow rv"><i></i>Cómo entras tú</span>
+  <h2 class="rv">Se llama <span class="accent">CSR26</span></h2>
+  <p class="lead rv">Tu recibo digital de un impacto real, verificable, para siempre.</p>
+  <div class="eq rv">
+    <div class="box">
+      <div class="coins"><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""></div>
+      <p><b style="color:var(--ink);font-size:16px">10 créditos CSR</b></p>
+    </div>
+    <span class="op">=</span>
+    <div class="box blue"><div class="n">1 kg</div><p>de plástico reciclado</p></div>
+    <span class="op">+</span>
+    <div class="box">
+      <svg class="bc" viewBox="0 0 120 64" fill="none" stroke="#0f5efe" stroke-width="2.4" stroke-linejoin="round" aria-hidden="true">
+        <g><path d="M8 22 20 15l12 7v14l-12 7-12-7z"/><path d="M8 22l12 7 12-7M20 29v14"/></g>
+        <g><path d="M48 22 60 15l12 7v14l-12 7-12-7z" fill="rgba(15,94,254,.12)"/><path d="M48 22l12 7 12-7M60 29v14"/></g>
+        <g><path d="M88 22l12-7 12 7v14l-12 7-12-7z"/><path d="M88 22l12 7 12-7M100 29v14"/></g>
+        <path d="M33 29h14M73 29h14" stroke-dasharray="3 3"/>
+        <path d="M54 56l4 4 8-8" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <p><b style="color:var(--ink);font-size:16px">Registrado en blockchain</b><br>Público · No se puede falsificar</p>
+    </div>
+  </div>
+  <div class="cards" style="text-align:left">
+    <div class="card rv"><span class="num">Paso 1</span><h3>Eliges</h3><p>Decides cuánto plástico quieres compensar.</p></div>
+    <div class="card rv"><span class="num">Paso 2</span><h3>Corsair recicla</h3><p>Verificado por auditores externos y registrado en blockchain. Nadie lo puede manipular ni falsificar.</p></div>
+    <div class="card rv"><span class="num">Paso 3</span><h3>Recibes</h3><p>En 24 meses tienes el 100% de tus créditos en tu cuenta.</p></div>
+  </div>
+</div></section>
+
+<!-- POR QUÉ HOY -->
+<section><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow rv"><i></i>Por qué hoy y no dentro de un año</span>
+    <h2 class="rv">Tres razones.<br><span class="accent">Una decisión.</span></h2></div>
+  </div>
+  <div class="cards">
+    <div class="card rv"><span class="num">01</span><h3>Precio actual</h3><p>Muy por debajo del valor real de mercado.</p></div>
+    <div class="card rv"><span class="num">02</span><h3>Hasta 7× más</h3><p>Es lo que ya cobra la competencia por lo mismo.</p></div>
+    <div class="card rv"><span class="num">03</span><h3>La ley llega</h3><p>Cuando sea obligatorio en todos los países, la demanda se multiplicará. Y el precio con ella.</p></div>
+  </div>
+  <div class="marquee"><div class="track">
+    <span>Marriott<em>·</em></span><span>Aeropuertos internacionales<em>·</em></span><span>Puertos deportivos<em>·</em></span><span>Hoteles<em>·</em></span><span>Celebridades<em>·</em></span><span>Clubes deportivos<em>·</em></span>
+    <span>Marriott<em>·</em></span><span>Aeropuertos internacionales<em>·</em></span><span>Puertos deportivos<em>·</em></span><span>Hoteles<em>·</em></span><span>Celebridades<em>·</em></span><span>Clubes deportivos<em>·</em></span>
+  </div></div>
+  <p class="center" style="color:var(--muted);margin-top:20px;font-size:14px">Cientos de empresas ya lo están haciendo. Ahora mismo.</p>
+</div></section>
+
+<!-- COCA-COLA -->
+<section class="dark"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow rv"><i></i>Un número que vuela la cabeza</span>
+    <h2 class="rv">La demanda <span class="accent">todavía no existe.</span></h2></div>
+    <p class="lead rv">Y eso es solo una marca. Si sumas ocho de las mayores empresas del mundo, la demanda supera los 70.000 millones de créditos.</p>
+  </div>
+  <div class="big">
+    <div class="card rv"><p>Coca-Cola, compensando la mitad de su plástico anual</p><div class="n">18.000M</div><p>créditos necesarios</p><div class="meter"><i class="a"></i></div></div>
+    <div class="card rv"><p>Todo lo generado por Corsair en seis años</p><div class="n accent">10.000M</div><p>créditos en total</p><div class="meter"><i class="b"></i></div></div>
+  </div>
+</div></section>
+
+<!-- SECTORES -->
+<section id="sectores"><div class="wrap center">
+  <span class="eyebrow rv"><i></i>Tu lugar en la solución</span>
+  <h2 class="rv">¿Cuál es <span class="accent">tu ola?</span></h2>
+  <p class="lead rv">Elige tu perfil. Te contamos exactamente cómo encajas.</p>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-t="s1">Hoteles, deporte y comercio</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="s2">Particulares e inversores</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="s3">Pymes · Sello ESG</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="s4">Emprendedores · Corsair Connect</button>
+  </div>
+
+  <div class="panel on" id="s1" style="text-align:left">
+    <div class="card"><h3>Tu residuo puede ser <span class="accent">tu reputación.</span></h3>
+      <ul><li>Compensas tu huella de plástico con créditos certificados, según lo que tu negocio genera de verdad.</li><li>Recibes un certificado oficial y verificable para tu web, tu local y tus redes.</li><li>Tus clientes saben que, al elegirte, apoyan a un negocio que ya resolvió su parte.</li></ul>
+      <a class="btn btn-blue" href="CAL_URL" target="_blank" rel="noopener">Agenda tu reunión</a></div>
+    <div class="card side"><div class="q">“Eso no se compra con publicidad. Se construye con hechos.”</div><small>Tu certificado. Tu diferencia. Tu reunión, hoy.</small></div>
+  </div>
+
+  <div class="panel" id="s2" style="text-align:left">
+    <div class="card"><h3>Impacto real. <span class="accent">Retorno real.</span></h3>
+      <ul><li>Compensa tu propia huella personal con créditos de plástico.</li><li>O ve un paso más allá y participa en los proyectos que lo hacen posible.</li><li>Sistema certificado, con respaldo institucional y impacto medible.</li></ul>
+      <a class="btn btn-blue" href="CAL_URL" target="_blank" rel="noopener">Reserva tu reunión</a></div>
+    <div class="card side"><div class="q">“No necesitas ser una corporación para formar parte de la solución.”</div><small>¿Quieres ser de los que actúan, o de los que esperan?</small></div>
+  </div>
+
+  <div class="panel" id="s3" style="text-align:left">
+    <div class="card"><h3>El estándar que viene, <span class="accent">hoy.</span></h3>
+      <ul><li>Certificamos tu empresa según el volumen real de plástico que genera o utiliza.</li><li>Paquetes adaptados a tu tamaño y sector, respaldados por ISCC, Control Union y los ODS de la ONU.</li><li>Muéstralo en tu web, licitaciones y propuestas comerciales.</li></ul>
+      <a class="btn btn-blue" href="CAL_URL" target="_blank" rel="noopener">Agenda tu reunión</a></div>
+    <div class="card side"><div class="q">“Mientras otros hablan de sostenibilidad, tú ya la tendrás certificada.”</div><small>Certificado. Real. Verificable.</small></div>
+  </div>
+
+  <div class="panel" id="s4" style="text-align:left">
+    <div class="card"><h3>No mires cómo otros lo construyen. <span class="accent">Constrúyelo tú.</span></h3>
+      <ul><li>Corsair Connect: una red internacional para ayudar a empresas y particulares a acceder a la solución.</li><li>Cuando tu equipo crece, tú creces. Comunidad, no competencia.</li><li>Una industria que va a crecer durante las próximas tres décadas.</li></ul>
+      <a class="btn btn-blue" href="MEET_URL" target="_blank" rel="noopener">Presentación online · Lunes [hora]</a></div>
+    <div class="card side"><div class="q">“Donde crece el problema, crece la industria que lo resuelve.”</div><small>El lunes te explicamos el modelo y cómo empezar.</small></div>
+  </div>
+</div></section>
+
+<!-- FINAL -->
+<section class="dark final"><div class="wrap">
+  <span class="eyebrow rv"><i></i>Esta ola está empezando ahora</span>
+  <h2 class="rv">Hoy tú puedes ser<br><span class="accent">el protagonista</span></h2>
+  <p class="lead rv">La pregunta no es si esto va a pasar. Ya está pasando. La única pregunta es cuánto plástico quieres sacar del planeta… y cuánto de esta ola quieres aprovechar tú.</p>
+  <div class="cta-row rv">
+    <a href="#sectores" class="btn btn-blue">Quiero estar dentro</a>
+    <a href="#v" class="btn btn-ghost" onclick="playVideo()">Volver a ver el vídeo</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© 2026 CSR26 · Corsair Connect</span>
+  <p>La información de esta página es divulgativa y no constituye asesoramiento financiero. La evolución pasada de otros mercados (como el del carbono) no garantiza resultados futuros. Toda participación conlleva riesgos.</p>
+</div></footer>
+
+<script>
+  // Vídeo: carga el MP4 (o cambia por iframe) al pulsar play
+  function playVideo(){
+    const v=document.getElementById('v');
+    v.scrollIntoView({behavior:'smooth',block:'center'});
+    if(v.querySelector('video,iframe')) return;
+    v.innerHTML='<video src="'+v.dataset.src+'" controls autoplay playsinline></video>';
+  }
+  // Nav con borde al hacer scroll
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+  // Reveal + animaciones de gráficos
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+  document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});
+  // Tabs sectores
+  document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id===t.dataset.t));
+  });
+  // Gráfico carbono: se dibuja de 2017 a 2026 + tooltip al tocar/pasar el ratón
+  (()=>{
+    const D=[[2017,4],[2018,16],[2019,25],[2020,30],[2021,54],[2022,80],[2023,84],[2024,66],[2025,74],[2026,88]];
+    const X=i=>20+i*(540/(D.length-1)), Y=v=>260-v*2.4, $=id=>document.getElementById(id);
+    const svg=$('cchart'), P=D.map(([y,v],i)=>[X(i),Y(v)]);
+    $('cyears').innerHTML=D.map(([y],i)=>i%3==0||i==D.length-1?`<text x="${X(i)}" y="285">${y}</text>`:'').join('');
+    function draw(t){ // t: 0..1
+      const f=t*(P.length-1), k=Math.floor(f), r=f-k, pts=P.slice(0,k+1);
+      if(k<P.length-1) pts.push([P[k][0]+(P[k+1][0]-P[k][0])*r, P[k][1]+(P[k+1][1]-P[k][1])*r]);
+      const d='M'+pts.map(p=>p.join(' ')).join(' L'), h=pts[pts.length-1];
+      $('cline').setAttribute('d',d);
+      $('carea').setAttribute('d',d+` L${h[0]} 260 L${P[0][0]} 260Z`);
+      ['chead','chalo'].forEach(id=>{$(id).setAttribute('cx',h[0]);$(id).setAttribute('cy',h[1])});
+      const v=k<P.length-1?D[k][1]+(D[k+1][1]-D[k][1])*r:D[k][1];
+      $('cprice').textContent=Math.round(v)+'€';
+      $('cyear').textContent='precio en '+D[Math.min(Math.round(f),D.length-1)][0];
+    }
+    let raf;
+    function play(){
+      cancelAnimationFrame(raf); const t0=performance.now(), dur=3200;
+      const step=now=>{const t=Math.min((now-t0)/dur,1); draw(1-Math.pow(1-t,3)); if(t<1) raf=requestAnimationFrame(step)};
+      raf=requestAnimationFrame(step);
+    }
+    draw(0);
+    new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){play();o.disconnect()}},{threshold:.4}).observe(svg);
+    $('creplay').onclick=play;
+    function tip(ev){
+      const b=svg.getBoundingClientRect(), x=(ev.clientX-b.left)*600/b.width;
+      const i=Math.max(0,Math.min(D.length-1,Math.round((x-20)/(540/(D.length-1))))), [px,py]=P[i];
+      svg.classList.add('hover');
+      $('tline').setAttribute('x1',px);$('tline').setAttribute('x2',px);
+      $('tdot').setAttribute('cx',px);$('tdot').setAttribute('cy',py);
+      const bx=Math.min(Math.max(px-43,0),514), by=py-58<0?py+14:py-58;
+      $('tbox').setAttribute('x',bx);$('tbox').setAttribute('y',by);
+      $('ty').setAttribute('x',bx+12);$('ty').setAttribute('y',by+17);$('ty').textContent=D[i][0];
+      $('tv').setAttribute('x',bx+12);$('tv').setAttribute('y',by+36);$('tv').textContent=D[i][1]+' €';
+    }
+    svg.addEventListener('pointermove',tip);svg.addEventListener('pointerdown',tip);
+    svg.addEventListener('pointerleave',()=>svg.classList.remove('hover'));
+  })();
+  // Abrir sector por URL: index.html#s3 (útil para enlazar desde cada vídeo de Fase 1)
+  const h=location.hash.slice(1); const tb=document.querySelector('[data-t="'+h+'"]'); if(tb){tb.click();sectores.scrollIntoView()}
+</script>
+</body>
+</html>
