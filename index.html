@@ -236,22 +236,21 @@
   }
 
   /* aviso legal */
-  #legal{border:0;padding:0;border-radius:24px;max-width:620px;width:calc(100% - 32px);max-height:calc(100dvh - 32px);margin:auto;background:#fff;color:var(--ink);box-shadow:0 40px 120px -20px rgba(5,5,38,.5);overflow:hidden}
+  #legal{border:0;padding:0;border-radius:24px;max-width:440px;width:calc(100% - 32px);max-height:calc(100dvh - 32px);margin:auto;background:#fff;color:var(--ink);box-shadow:0 40px 120px -20px rgba(5,5,38,.5);overflow:hidden}
   #legal[open]{display:flex;flex-direction:column}
   #legal::backdrop{background:rgba(10,10,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-  #legal .lh{padding:28px 28px 12px}
-  #legal .lh h3{font-size:30px}
+  #legal .lh{padding:24px 24px 14px}
+  #legal .lh h3{font-size:26px}
   #legal .lh p{color:var(--muted);font-size:14px;margin-top:6px}
-  #legal .lb{padding:0 28px;overflow-y:auto;font-size:13.5px;color:var(--muted-2);border-block:1px solid var(--line)}
+  #legal .lb{padding:0 24px;font-size:13px;color:var(--muted-2);border-block:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+  #legal summary{cursor:pointer;padding:12px 0;font-size:13.5px;color:var(--blue);font-weight:500}
+  #legal .lt{overflow-y:auto;max-height:45vh}
   #legal .lb:focus{outline:none}
   #legal .lb h4{font:600 14px var(--sans);color:var(--ink);margin:18px 0 4px}
   #legal .lb p{margin-bottom:6px}
   #legal .lb p:last-child{margin-bottom:18px}
-  #legal .lf{padding:18px 28px 24px;display:flex;flex-direction:column;gap:14px}
-  #legal label{display:flex;gap:10px;font-size:13.5px;align-items:flex-start;cursor:pointer}
-  #legal input{margin-top:3px;width:18px;height:18px;accent-color:var(--blue);flex:none}
+  #legal .lf{padding:16px 24px 22px;display:flex;flex-direction:column;gap:14px}
   #legal .btn{width:100%;justify-content:center}
-  #legal .btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
   footer a{text-decoration:underline;cursor:pointer}
 
 
@@ -630,13 +629,13 @@
     <a href="https://www.youtube.com/channel/UCo0mwBoHBJJOTbZxibsVTlQ" target="_blank" rel="noopener">YouTube</a> ·
     <a href="https://www.instagram.com/corsair.international/" target="_blank" rel="noopener">Instagram</a> ·
     <a href="https://www.facebook.com/CorsairInternational" target="_blank" rel="noopener">Facebook</a></span>
-  <p>La información de esta página es divulgativa y no constituye asesoramiento financiero. La evolución pasada de otros mercados (como el de los créditos de carbono) no garantiza resultados futuros. Toda participación conlleva riesgos. <a onclick="legal.showModal()">Aviso legal y términos de uso</a></p>
+  <p>La información de esta página es divulgativa y no constituye asesoramiento financiero. La evolución pasada de otros mercados (como el de los créditos de carbono) no garantiza resultados futuros. Toda participación conlleva riesgos. <a onclick="document.getElementById('legal-d').open=true;legal.showModal()">Aviso legal y términos de uso</a></p>
 </div></footer>
 
 <!-- AVISO LEGAL: se muestra al entrar hasta que se acepta. Rellena los [CORCHETES]. -->
 <dialog id="legal" aria-labelledby="legal-t">
-  <div class="lh"><h3 id="legal-t">Antes de continuar</h3><p>Lee y acepta las condiciones de uso de esta web.</p></div>
-  <div class="lb">
+  <div class="lh"><h3 id="legal-t">Antes de continuar</h3><p>Esta web es solo informativa. No es asesoramiento ni una oferta de inversión.</p></div>
+  <details class="lb" id="legal-d"><summary>Leer aviso legal</summary><div class="lt">
     <h4>1. Solo información, no asesoramiento</h4>
     <p>Todo el contenido de esta web (textos, vídeos, gráficos y cifras) tiene carácter exclusivamente informativo y divulgativo. No constituye asesoramiento financiero, de inversión, fiscal ni jurídico, ni una recomendación personalizada.</p>
     <h4>2. No es una oferta de inversión</h4>
@@ -655,10 +654,9 @@
     <p>Esta web no usa cookies de seguimiento ni publicidad. Solo guarda en tu navegador que has aceptado este aviso. Para mostrar las tipografías se cargan desde Google Fonts, lo que implica que Google recibe tu dirección IP. Si agendas una reunión, tus datos los trata el servicio que utilices (por ejemplo, Google Calendar) según su propia política.</p>
     <h4>9. Legislación</h4>
     <p>Estas condiciones se rigen por la legislación española, incluida la Ley 34/2002 (LSSI) y el Reglamento (UE) 2016/679 (RGPD).</p>
-  </div>
+  </div></details>
   <div class="lf">
-    <label><input type="checkbox" id="legal-ok"> He leído y acepto el aviso legal. Entiendo que esto no es asesoramiento ni una oferta de inversión.</label>
-    <button class="btn btn-dark" id="legal-btn" disabled>Aceptar y continuar</button>
+    <button class="btn btn-dark" id="legal-btn" autofocus>Acepto</button>
   </div>
 </dialog>
 
@@ -722,12 +720,11 @@
   })();
   // Aviso legal: se muestra hasta que se acepta (se recuerda en este navegador)
   (()=>{
-    const K='csr26-legal-v1', ok=document.getElementById('legal-ok'), btn=document.getElementById('legal-btn');
+    const K='csr26-legal-v1', btn=document.getElementById('legal-btn');
     let accepted=false; try{accepted=localStorage.getItem(K)==='1'}catch(e){}
     legal.addEventListener('cancel',e=>{if(!accepted)e.preventDefault()}); // Esc no lo cierra sin aceptar
-    ok.onchange=()=>btn.disabled=!ok.checked;
     btn.onclick=()=>{accepted=true;try{localStorage.setItem(K,'1')}catch(e){}legal.close()};
-    if(accepted){ok.checked=true;btn.disabled=false}else legal.showModal();
+    if(!accepted)legal.showModal();
   })();
   // Vídeos por sector: al reproducir uno, se pausan los demás
   const vids=document.querySelectorAll('video');
