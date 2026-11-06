@@ -199,7 +199,7 @@
   .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:48px 0 24px}
   .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 20px;font:500 14px var(--sans);cursor:pointer;color:var(--muted-2);transition:.2s}
   .tab[aria-selected=true]{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .panel{display:none;grid-template-columns:1.2fr 1fr;gap:16px}
+  .panel{display:none;grid-template-columns:1fr 340px;align-items:start;gap:16px}
   .panel.on{display:grid;animation:fade .5s}
   @keyframes fade{from{opacity:0;transform:translateY(10px)}}
   .panel .card{padding:44px}
@@ -235,6 +235,70 @@
     .vcard{flex:0 0 78%;scroll-snap-align:center}
   }
 
+  /* aviso legal */
+  #legal{border:0;padding:0;border-radius:24px;max-width:620px;width:calc(100% - 32px);max-height:calc(100dvh - 32px);margin:auto;background:#fff;color:var(--ink);box-shadow:0 40px 120px -20px rgba(5,5,38,.5);overflow:hidden}
+  #legal[open]{display:flex;flex-direction:column}
+  #legal::backdrop{background:rgba(10,10,20,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  #legal .lh{padding:28px 28px 12px}
+  #legal .lh h3{font-size:30px}
+  #legal .lh p{color:var(--muted);font-size:14px;margin-top:6px}
+  #legal .lb{padding:0 28px;overflow-y:auto;font-size:13.5px;color:var(--muted-2);border-block:1px solid var(--line)}
+  #legal .lb:focus{outline:none}
+  #legal .lb h4{font:600 14px var(--sans);color:var(--ink);margin:18px 0 4px}
+  #legal .lb p{margin-bottom:6px}
+  #legal .lb p:last-child{margin-bottom:18px}
+  #legal .lf{padding:18px 28px 24px;display:flex;flex-direction:column;gap:14px}
+  #legal label{display:flex;gap:10px;font-size:13.5px;align-items:flex-start;cursor:pointer}
+  #legal input{margin-top:3px;width:18px;height:18px;accent-color:var(--blue);flex:none}
+  #legal .btn{width:100%;justify-content:center}
+  #legal .btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+  footer a{text-decoration:underline;cursor:pointer}
+
+
+  /* fuentes / enlaces */
+  .src{display:inline-block;margin-top:6px;font-size:12px;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+  .src:hover{color:var(--blue)}
+  .dark .src{color:#9a9a9a}
+  .social{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:24px;font-size:13px;color:var(--muted)}
+  .social a{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 16px;color:var(--ink)}
+  .social a:hover{border-color:var(--blue);color:var(--blue)}
+
+  /* historia carbono vs plástico */
+  .hist{margin-top:56px;display:grid;gap:56px;text-align:left}
+  .hist h3{font-size:clamp(24px,2.6vw,32px);margin-bottom:20px;color:var(--muted)}
+  .hist .pl h3{color:var(--ink)}
+  .trk{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .trk .ln,.trk .fl{position:absolute;left:0;top:36px;height:2px}
+  .trk .ln{right:0;background:var(--line)}
+  .pl .trk .ln{background:repeating-linear-gradient(var(--dir,90deg),#c3cbe0 0 6px,transparent 6px 12px)}
+  .trk .fl{width:0;background:linear-gradient(90deg,#0f5efe,#0b3aa7);transition:width var(--d) linear var(--dl)}
+  .in .trk .fl{width:var(--to)}
+  .ms .yr{display:block;height:28px;font:600 15px var(--sans);color:var(--ink)}
+  .ms .dot{display:block;position:relative;z-index:1;width:12px;height:12px;border-radius:50%;background:#d1d3d4;margin:2px 0 14px;
+    transition:background .3s,box-shadow .3s;transition-delay:calc(var(--dl) + var(--d) * var(--i) / 4)}
+  .in .ms .dot{background:#0f5efe;box-shadow:0 0 0 5px rgba(15,94,254,.15)}
+  .in .ms.fut .dot{background:#d1d3d4;box-shadow:none}
+  .ms.now .yr{color:var(--blue)}
+  .ms.now .dot{width:18px;height:18px;margin:-1px 0 11px -3px}
+  .in .ms.now .dot{animation:beat 1.6s ease-in-out 3.8s infinite}
+  @keyframes beat{50%{box-shadow:0 0 0 12px rgba(15,94,254,0)}}
+  .ms p{font-size:14px;color:var(--muted-2)}
+  .ms.fut p{color:var(--muted)}
+  .gold{font-family:var(--serif);font-style:italic;font-size:clamp(24px,3vw,36px);color:var(--muted-2);margin-top:56px}
+
+  /* leyes */
+  .laws{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .laws .card{background:#fff}
+  .laws h3{margin-bottom:8px}
+  .law{padding:16px 0;border-top:1px solid var(--line)}
+  .law:first-of-type{border-top:0}
+  .law b{display:block;font-size:15px;color:var(--ink);margin-bottom:4px}
+  .law p{font-size:14px}
+
+  /* vídeo por sector */
+  .pv{border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:9/16}
+  .pv video{width:100%;height:100%;object-fit:cover;display:block}
+
   footer{background:var(--dark);color:#717171;font-size:13px;border-top:1px solid #2b2c2c;padding:40px 0}
   footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
   footer p{max-width:720px}
@@ -253,13 +317,23 @@
     .step b{font-size:15px;margin:0;line-height:1.1}
     .step span{display:none}
     .step:not(:last-child)::after{right:-10px;width:14px;height:14px;font-size:8px}
-    .chart,.big,.panel.on{grid-template-columns:1fr}
+    .chart,.big,.panel.on,.laws{grid-template-columns:1fr}
+    .pv{order:-1;justify-self:center;height:min(72vh,640px);width:auto}
   }
   @media (max-width:600px){
     .wrap{padding:0 16px}
     .cards,.trust{grid-template-columns:1fr}
     .stat{padding:28px 20px}
     .row{grid-template-columns:1fr;gap:8px}.tl small{padding-left:0}
+    .trk{grid-template-columns:1fr;grid-auto-rows:1fr;gap:0;padding-left:30px;--dir:180deg}
+    .trk .ln,.trk .fl{left:5px;top:0;bottom:0;width:2px;height:auto}
+    .trk .ln{right:auto}
+    .trk .fl{height:0;width:2px;transition-property:height;background:linear-gradient(180deg,#0f5efe,#0b3aa7)}
+    .in .trk .fl{width:2px;height:var(--toh)}
+    .ms{position:relative;padding-bottom:22px}
+    .ms .yr{height:auto;margin-bottom:4px}
+    .ms .dot{position:absolute;left:-30px;top:3px;margin:0}
+    .ms.now .dot{left:-33px;top:0;margin:0}
     .eq .box{min-width:0;width:100%}
     .video{border-radius:18px}
     nav .wrap{height:60px}
@@ -281,7 +355,7 @@
 <nav id="nav"><div class="wrap">
   <a href="#" class="logo"><img src="img/logo.png" alt="">CSR26</a>
   <div class="links">
-    <a href="#video">Vídeo</a><a href="#corsair">Corsair</a><a href="#mercado">Mercado</a><a href="#csr26">CSR26</a><a href="#sectores">Para ti</a>
+    <a href="#video">Vídeo</a><a href="#corsair">Corsair</a><a href="#mercado">Mercado</a><a href="#historia">Historia</a><a href="#leyes">Leyes</a><a href="#csr26">CSR26</a><a href="#sectores">Para ti</a>
   </div>
   <a href="#sectores" class="btn btn-dark">Agenda una llamada</a>
 </div></nav>
@@ -291,11 +365,11 @@
   <h1 class="rv">El mayor problema<br>del planeta es la próxima<br><span class="accent">gran oportunidad</span></h1>
   <p class="lead rv">Donde hay un problema de esta magnitud, <b style="color:var(--ink);font-weight:500">siempre existe una oportunidad igual de grande.</b></p>
 
-  <!-- 🎬 VÍDEO: sustituye VIDEO_SRC por tu MP4, o pega un <iframe> de YouTube/Vimeo dentro de .video -->
+  <!-- 🎬 VÍDEO PRINCIPAL: pon el MP4 en videos/ y cambia data-src -->
   <div class="video rv" id="v" data-src="video.mp4">
     <div class="ph" onclick="playVideo()">
       <div class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></div>
-      <div class="tag"><b>La ola del plástico</b>Corsair Group · CSR26</div>
+      <div class="tag"><b>La ola del plástico</b>Corsair Group International · CSR26</div>
     </div>
   </div>
 
@@ -304,27 +378,29 @@
   </div>
 
   <div class="stats rv">
-    <div class="stat"><div class="n" data-count="9">9%</div><p>de todo el plástico producido en la historia se ha reciclado de verdad.</p></div>
-    <div class="stat"><div class="n">100k</div><p>animales marinos mueren cada año por el plástico.</p></div>
-    <div class="stat"><div class="n">1.000</div><p>años puede tardar el plástico en desaparecer.</p></div>
-    <div class="stat"><div class="n">×3</div><p>la producción mundial de plástico antes de 2060.</p></div>
+    <div class="stat"><div class="n">9%</div><p>de los residuos plásticos del mundo se recicla (2019).</p><a class="src" href="https://doi.org/10.1787/de747aef-en" target="_blank" rel="noopener">Fuente: OCDE ↗</a></div>
+    <div class="stat"><div class="n">100k</div><p>mamíferos marinos se estima que mueren cada año por el plástico.</p><a class="src" href="https://www.wwf.org.au/blogs/plastic-in-our-oceans-is-killing-marine-mammals" target="_blank" rel="noopener">Fuente: WWF ↗</a></div>
+    <div class="stat"><div class="n">1.000</div><p>años puede tardar el plástico en descomponerse en un vertedero.</p><a class="src" href="https://labs.ece.uw.edu/community/resources/Plastics_EnvironmentalImpacts_Degradation.pdf" target="_blank" rel="noopener">Fuente: Univ. de Washington ↗</a></div>
+    <div class="stat"><div class="n">×3</div><p>los residuos plásticos del mundo antes de 2060 si nada cambia.</p><a class="src" href="https://doi.org/10.1787/aa1edf33-en" target="_blank" rel="noopener">Fuente: OCDE ↗</a></div>
   </div>
+  <p class="rv" style="color:var(--muted);font-size:13px;margin-top:16px">Ya hay microplásticos en nuestra sangre: se detectaron en el 77% de las personas analizadas. <a class="src" href="https://doi.org/10.1016/j.envint.2022.107199" target="_blank" rel="noopener">Estudio en Environment International (2022) ↗</a></p>
 </div></header>
 
 <!-- CORSAIR -->
 <section id="corsair" style="background:var(--bg-2);border-block:1px solid var(--line)"><div class="wrap">
   <div class="head">
     <div><span class="eyebrow rv"><i></i>Quién está detrás</span>
-    <h2 class="rv">Corsair Group.<br>No es un proyecto. <span class="accent">Es una operación real.</span></h2></div>
-    <p class="lead rv">Fundada en 2020. Plantas operativas en Asia y en Europa al mismo tiempo, transformando plástico en aceite de pirólisis. Ya en marcha. Ya facturando.</p>
+    <h2 class="rv">Corsair Group International.<br><span class="accent">Una operación real.</span></h2></div>
+    <p class="lead rv">Fundada en 2020. Líder en reciclaje químico: convierte residuos plásticos en aceite de pirólisis en sus plantas de Asia y Europa.</p>
   </div>
 
   <div class="cards">
-    <div class="card rv"><span class="num">01 — Reciclaje químico</span><h3>Pirólisis</h3><p>Descompone el plástico a nivel molecular con calor controlado y sin oxígeno. El reciclaje mecánico degrada; el químico regenera.</p></div>
-    <div class="card rv"><span class="num">02 — Presencia global</span><h3>Asia + Europa</h3><p>Plantas construidas y operando hoy, con equipo técnico propio y procesos certificados.</p></div>
-    <div class="card rv"><span class="num">03 — Cliente final</span><h3>Vende a Shell</h3><p>Acuerdos directos con una de las compañías energéticas más grandes del planeta para la compra del aceite de pirólisis.</p></div>
+    <div class="card rv"><span class="num">01 — Reciclaje químico</span><h3>Pirólisis</h3><p>Descompone el plástico con calor y sin oxígeno, y lo convierte en aceite con el que se fabrica nuevo plástico.</p><a class="src" href="https://corsairgroup.com/pyrolysis/" target="_blank" rel="noopener">Cómo funciona ↗</a></div>
+    <div class="card rv"><span class="num">02 — Plantas operativas</span><h3>Bangkok + Jämsä</h3><p><b>Bangkok (Tailandia):</b> operativa desde 2020, más de 30.000 m².<br><b>Jämsä (Finlandia):</b> operativa desde 2023, más de 59.000 m².</p><a class="src" href="https://corsairgroup.com/operations/" target="_blank" rel="noopener">Ver instalaciones ↗</a></div>
+    <div class="card rv"><span class="num">03 — Cliente</span><h3>Suministra a Shell</h3><p>Dos acuerdos de suministro de aceite de pirólisis: de Tailandia a Singapur (feb. 2024) y de Finlandia a Moerdijk, Países Bajos (sep. 2024).</p>
+      <a class="src" href="https://www.accessnewswire.com/newsroom/en/clean-technology/corsair-signs-deal-to-supply-shell-with-pyrolysis-oil-832914" target="_blank" rel="noopener">Acuerdo 2024 · Singapur ↗</a><br>
+      <a class="src" href="https://www.accessnewswire.com/newsroom/en/clean-technology/corsair-to-supply-shell-with-plastic-pyrolysis-oil-from-finland-913812" target="_blank" rel="noopener">Acuerdo 2024 · Países Bajos ↗</a></div>
   </div>
-
 
   <div class="gallery rv">
     <figure class="w2 h2"><img src="img/Record-global-growth.jpg" alt="Reactores de pirólisis de Corsair" loading="lazy"><figcaption>Reactores de pirólisis</figcaption></figure>
@@ -338,23 +414,32 @@
   </div>
 
   <div class="trust" style="margin-top:16px">
-    <div class="badge rv"><span class="ck">✓</span><div><b>ISCC</b><span>Certificación de sostenibilidad</span></div></div>
-    <div class="badge rv"><span class="ck">✓</span><div><b>Control Union</b><span>Auditoría independiente</span></div></div>
-    <div class="badge rv"><span class="ck">✓</span><div><b>Naciones Unidas</b><span>Alineado con ODS 12 · 13 · 14</span></div></div>
-    <div class="badge rv"><span class="ck">✓</span><div><b>Shell</b><span>Comprador directo del aceite</span></div></div>
+    <div class="badge rv"><span class="ck">✓</span><div><b>ISCC</b><span>Aceite de pirólisis con certificación ISCC</span><br><a class="src" href="https://corsairgroup.com/about-us/" target="_blank" rel="noopener">Ver ↗</a> · <a class="src" href="https://www.iscc-system.org/certificates/valid-certificates/" target="_blank" rel="noopener">Base de datos ISCC ↗</a></div></div>
+    <div class="badge rv"><span class="ck">✓</span><div><b>Control Union</b><span>Audita el estándar CPRS de los créditos de plástico CSR26</span><br><a class="src" href="https://corsairgroup.com/csr-plastic-credit/" target="_blank" rel="noopener">Ver ↗</a></div></div>
+    <div class="badge rv"><span class="ck">✓</span><div><b>Naciones Unidas</b><span>Reconocida como Proveedor Sostenible en el Climate &amp; Sustainability Capital Forum</span><br><a class="src" href="https://corsairgroup.com/about-us/" target="_blank" rel="noopener">Ver ↗</a></div></div>
+    <div class="badge rv"><span class="ck">✓</span><div><b>Shell</b><span>Compra su aceite de pirólisis</span><br><a class="src" href="https://www.accessnewswire.com/newsroom/en/clean-technology/corsair-to-supply-shell-with-plastic-pyrolysis-oil-from-finland-913812" target="_blank" rel="noopener">Ver ↗</a></div></div>
+  </div>
+
+  <div class="social rv">
+    <span>Corsair Group International:</span>
+    <a href="https://corsairgroup.com" target="_blank" rel="noopener">Web</a>
+    <a href="https://www.youtube.com/channel/UCo0mwBoHBJJOTbZxibsVTlQ" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.instagram.com/corsair.international/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/CorsairInternational" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.linkedin.com/company/corsairgroup/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </div></section>
 
 <!-- MERCADO CARBONO -->
 <section class="dark" id="mercado"><div class="wrap">
   <div class="head">
-    <div><span class="eyebrow rv"><i></i>Mira hacia atrás</span>
-    <h2 class="rv">El carbono ya lo hizo.<br><span class="accent">De 4€ a 88€.</span></h2></div>
-    <p class="lead rv">El mercado de créditos de carbono nació en 1997 y hoy mueve 800.000 millones de dólares al año. Quien entró temprano, lo vio multiplicarse.</p>
+    <div><span class="eyebrow rv"><i></i>Pero antes, miremos al pasado</span>
+    <h2 class="rv">Los créditos de carbono ya lo hicieron.<br><span class="accent">De 4€ a 88€.</span></h2></div>
+    <p class="lead rv">Nacieron en 1997 con el Protocolo de Kioto. Con el aumento de las exigencias normativas, su precio subió rápidamente, y hoy el mercado mundial mueve más de 800.000 millones de euros al año.</p>
   </div>
   <div class="chart rv">
     <div>
-    <svg id="cchart" viewBox="0 0 600 300" aria-label="Precio del crédito de carbono 2017-2026: de 4 a 88 euros">
+    <svg id="cchart" viewBox="0 0 600 300" aria-label="Precio del derecho de emisión europeo 2017-2026: de 4 a 88 euros">
       <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0f5efe" stop-opacity=".45"/><stop offset="1" stop-color="#0f5efe" stop-opacity="0"/></linearGradient>
         <filter id="glow"><feGaussianBlur stdDeviation="4"/></filter></defs>
       <g stroke="#2b2c2c"><line x1="0" y1="260" x2="600" y2="260"/><line x1="0" y1="200" x2="600" y2="200" stroke-dasharray="3 5"/><line x1="0" y1="140" x2="600" y2="140" stroke-dasharray="3 5"/><line x1="0" y1="80" x2="600" y2="80" stroke-dasharray="3 5"/><line x1="0" y1="20" x2="600" y2="20" stroke-dasharray="3 5"/></g>
@@ -368,42 +453,82 @@
         <rect id="tbox" width="86" height="44" rx="10" fill="#fff"/><text id="ty" font-size="11" fill="#717171" font-family="Inter,sans-serif"></text><text id="tv" font-size="18" fill="#131313" font-family="Inter,sans-serif" font-weight="600"></text></g>
     </svg>
     <button class="replay" id="creplay">↻ Repetir animación</button>
-    <small>Precio aproximado del crédito de carbono (EU ETS), €/tonelada.</small>
+    <small>Precio aproximado del derecho de emisión europeo (EU ETS), €/tonelada de CO₂. <a class="src" href="https://tradingeconomics.com/commodity/carbon" target="_blank" rel="noopener">Ver la gráfica real ↗</a></small>
     </div>
     <div class="kpis">
       <div><div class="n accent" id="cprice">4€</div><p id="cyear">precio en 2017</p></div>
       <div><div class="n">+2.100%</div><p>de subida en nueve años</p></div>
-      <div><div class="n">800.000M$</div><p>mueve el mercado cada año</p></div>
+      <div><div class="n">800.000M€</div><p>mueve el mercado cada año (2024)<br><a class="src" href="https://carbon-pulse.com/367790/" target="_blank" rel="noopener">Fuente: LSEG vía Carbon Pulse ↗</a></p></div>
     </div>
   </div>
 </div></section>
 
-<!-- REGULACIÓN + TIMELINE -->
-<section><div class="wrap center">
-  <span class="eyebrow rv"><i></i>Está pasando otra vez</span>
+<!-- HISTORIA: CARBONO vs PLÁSTICO -->
+<section id="historia"><div class="wrap center">
+  <span class="eyebrow rv"><i></i>La historia se repite</span>
   <h2 class="rv">Lo que hoy es voluntario,<br><span class="accent">mañana será obligatorio.</span></h2>
-  <p class="lead rv">Los gobiernos se mueven en la misma dirección. Y cuando la ley obliga, la demanda se dispara — y nadie puede detenerla.</p>
-  <div class="chips rv">
-    <span class="chip"><i></i>Unión Europea</span><span class="chip"><i></i>Filipinas</span><span class="chip"><i></i>Indonesia</span>
-    <span class="chip"><i></i>California</span><span class="chip"><i></i>India</span><span class="chip soon"><i></i>Próximos países</span>
-  </div>
+  <p class="lead rv">Los créditos de plástico siguen el mismo camino que los créditos de carbono. Con una diferencia: hoy estamos solo al principio.</p>
 
-  <div class="tl rv" style="text-align:left">
-    <div class="row"><div class="lbl">Carbono</div><div class="bar c"><div class="fill">1997 · voluntario → 2017 · el precio se dispara</div></div></div>
-    <div class="row"><div class="lbl accent">Plástico</div><div class="bar p"><div class="fill">2020 → hoy</div><span class="here"></span></div></div>
-    <small>El mismo camino, mucho más rápido. <b style="color:var(--blue)">Estamos aquí:</b> el momento en el que todo empieza a moverse.</small>
+  <div class="hist">
+    <div class="rv">
+      <h3>Créditos de carbono</h3>
+      <div class="trk" style="--d:2.6s;--dl:.2s;--to:100%;--toh:100%">
+        <span class="ln"></span><span class="fl"></span>
+        <div class="ms" style="--i:0"><b class="yr">1997</b><i class="dot"></i><p>Protocolo de Kioto: nacen los créditos de carbono.</p><a class="src" href="https://unfccc.int/kyoto_protocol" target="_blank" rel="noopener">ONU ↗</a></div>
+        <div class="ms" style="--i:1"><b class="yr">2005</b><i class="dot"></i><p>Arranca el mercado europeo de carbono (EU ETS).</p><a class="src" href="https://climate.ec.europa.eu/eu-action/eu-emissions-trading-system-eu-ets_en" target="_blank" rel="noopener">Comisión Europea ↗</a></div>
+        <div class="ms" style="--i:2"><b class="yr">2017</b><i class="dot"></i><p>Europa endurece las reglas y el precio empieza a subir (unos 6 $).</p><a class="src" href="https://eur-lex.europa.eu/eli/dir/2018/410/oj" target="_blank" rel="noopener">Directiva (UE) 2018/410 ↗</a></div>
+        <div class="ms" style="--i:3"><b class="yr">2026</b><i class="dot"></i><p>La demanda sigue aumentando y el precio continúa subiendo (unos 100 $).</p><a class="src" href="https://tradingeconomics.com/commodity/carbon" target="_blank" rel="noopener">Precio actual ↗</a></div>
+      </div>
+    </div>
+    <div class="rv pl">
+      <h3>Créditos de <span class="accent">plástico</span></h3>
+      <div class="trk" style="--d:2.6s;--dl:3s;--to:calc(50% + 12px);--toh:calc(50% + 8px)">
+        <span class="ln"></span><span class="fl"></span>
+        <div class="ms" style="--i:0"><b class="yr">2021</b><i class="dot"></i><p>Se lanza el primer estándar de créditos de plástico.</p><a class="src" href="https://verra.org/verra-launches-new-plastic-standard-to-drive-investment-in-plastic-waste-collection-and-recycling-projects/" target="_blank" rel="noopener">Verra ↗</a></div>
+        <div class="ms" style="--i:1"><b class="yr">2022</b><i class="dot"></i><p>Comienza el mercado voluntario: se emiten los primeros créditos de plástico.</p><a class="src" href="https://www.qcintel.com/carbon/article/verra-issues-first-plastic-waste-reduction-credits-to-second-life-4999.html" target="_blank" rel="noopener">QCIntel ↗</a></div>
+        <div class="ms now" style="--i:2"><b class="yr">HOY · 2026</b><i class="dot"></i><p>Las leyes internacionales están empezando a hacerlos obligatorios.</p><a class="src" href="#leyes">Ver las leyes ↓</a></div>
+        <div class="ms fut" style="--i:3"><b class="yr">2027 – 2030</b><i class="dot"></i><p>La demanda sigue aumentando y el precio continúa subiendo. (Precio: ??? $)</p></div>
+      </div>
+    </div>
+  </div>
+  <p class="gold rv">Nadie puede predecir los precios futuros, pero la dirección del mercado está clara.</p>
+</div></section>
+
+<!-- LEYES -->
+<section id="leyes" style="background:var(--bg-2);border-block:1px solid var(--line)"><div class="wrap">
+  <div class="head">
+    <div><span class="eyebrow rv"><i></i>Exigencias normativas cada vez mayores</span>
+    <h2 class="rv">Hoy compensar es una elección.<br><span class="accent">Mañana, una obligación.</span></h2></div>
+    <p class="lead rv">Europa, Asia y el resto del mundo ya están aprobando leyes que obligan a las empresas a responsabilizarse del plástico que ponen en el mercado.</p>
+  </div>
+  <div class="laws">
+    <div class="card rv"><h3>Europa</h3>
+      <div class="law"><b>PPWR · Reglamento (UE) 2025/40</b><p>Objetivos obligatorios de reciclaje y de contenido reciclado en los envases.</p><a class="src" href="https://eur-lex.europa.eu/eli/reg/2025/40/oj" target="_blank" rel="noopener">EUR-Lex ↗</a></div>
+      <div class="law"><b>EPR · Responsabilidad ampliada del productor</b><p>Quien pone envases de plástico en el mercado paga su gestión al final de su vida útil (Directiva (UE) 2018/851).</p><a class="src" href="https://eur-lex.europa.eu/eli/dir/2018/851/oj" target="_blank" rel="noopener">EUR-Lex ↗</a></div>
+      <div class="law"><b>CSRD · Directiva (UE) 2022/2464</b><p>Las grandes empresas deben informar de su impacto medioambiental.</p><a class="src" href="https://eur-lex.europa.eu/eli/dir/2022/2464/oj" target="_blank" rel="noopener">EUR-Lex ↗</a></div>
+    </div>
+    <div class="card rv"><h3>Asia</h3>
+      <div class="law"><b>Filipinas · Ley EPR 2022 (RA 11898)</b><p>Objetivos de recuperación de plástico que suben del 20% al 80% en 2028.</p><a class="src" href="https://lawphil.net/statutes/repacts/ra2022/ra_11898_2022.html" target="_blank" rel="noopener">Texto de la ley ↗</a></div>
+      <div class="law"><b>Indonesia · Reglamento P.75/2019</b><p>Los productores deben reducir un 30% sus residuos para 2029.</p><a class="src" href="https://nicholasinstitute.duke.edu/sites/default/files/plastics-policies/112021_N_2019_The_minister_of_environment.pdf" target="_blank" rel="noopener">Texto del reglamento ↗</a></div>
+      <div class="law"><b>Vietnam · Decreto 08/2022/ND-CP</b><p>Productores e importadores están obligados a reciclar sus envases.</p><a class="src" href="https://www.vietnam-briefing.com/news/vietnams-extended-producer-responsibility-policy-company-recycling-obligations.html" target="_blank" rel="noopener">Vietnam Briefing ↗</a></div>
+    </div>
+    <div class="card rv"><h3>Mundo</h3>
+      <div class="law"><b>India · Plastic Waste Management Rules 2022</b><p>Responsabilidad ampliada del productor obligatoria para los envases de plástico.</p><a class="src" href="https://www.informea.org/en/content/legislation/plastic-waste-management-amendment-rules-2022-0" target="_blank" rel="noopener">InforMEA (ONU) ↗</a></div>
+      <div class="law"><b>California · Ley SB 54 (2022)</b><p>Todos los envases de plástico de un solo uso deberán ser reciclables o compostables en 2032.</p><a class="src" href="https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202120220SB54" target="_blank" rel="noopener">Texto de la ley ↗</a></div>
+      <div class="law"><b>Consumidores y cadenas de suministro</b><p>La misma dirección en todo el mundo: exigen pruebas, no promesas.</p></div>
+    </div>
   </div>
 </div></section>
 
 <!-- CSR26 -->
-<section id="csr26" style="background:var(--bg-2);border-block:1px solid var(--line)"><div class="wrap center">
+<section id="csr26"><div class="wrap center">
   <span class="eyebrow rv"><i></i>Cómo entras tú</span>
   <h2 class="rv">Se llama <span class="accent">CSR26</span></h2>
-  <p class="lead rv">Tu recibo digital de un impacto real, verificable, para siempre.</p>
+  <p class="lead rv">Por cada kg de plástico reciclado, Corsair Group International emite 10 créditos de plástico CSR26: el recibo digital de un impacto real y verificable.</p>
   <div class="eq rv">
     <div class="box">
       <div class="coins"><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""><img src="img/logo.png" alt=""></div>
-      <p><b style="color:var(--ink);font-size:16px">10 créditos CSR</b></p>
+      <p><b style="color:var(--ink);font-size:16px">10 créditos de plástico CSR26</b></p>
     </div>
     <span class="op">=</span>
     <div class="box blue"><div class="n">1 kg</div><p>de plástico reciclado</p></div>
@@ -416,86 +541,75 @@
         <path d="M33 29h14M73 29h14" stroke-dasharray="3 3"/>
         <path d="M54 56l4 4 8-8" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
       </svg>
-      <p><b style="color:var(--ink);font-size:16px">Registrado en blockchain</b><br>Público · No se puede falsificar</p>
+      <p><b style="color:var(--ink);font-size:16px">Registrado en blockchain</b><br>Pública · Trazable por cualquiera</p>
     </div>
   </div>
   <div class="cards" style="text-align:left">
-    <div class="card rv"><span class="num">Paso 1</span><h3>Eliges</h3><p>Decides cuánto plástico quieres compensar.</p></div>
-    <div class="card rv"><span class="num">Paso 2</span><h3>Corsair recicla</h3><p>Verificado por auditores externos y registrado en blockchain. Nadie lo puede manipular ni falsificar.</p></div>
-    <div class="card rv"><span class="num">Paso 3</span><h3>Recibes</h3><p>En 24 meses tienes el 100% de tus créditos en tu cuenta.</p></div>
+    <div class="card rv"><span class="num">Paso 1</span><h3>Eliges</h3><p>Decides cuántos kilos de plástico quieres compensar: 1.000 kg, 5.000 kg… lo que tú elijas.</p></div>
+    <div class="card rv"><span class="num">Paso 2</span><h3>Corsair recicla</h3><p>Corsair Group International recicla ese plástico. Auditores externos verifican el proceso y cada crédito de plástico queda registrado en una blockchain pública, transparente y trazable por cualquiera.</p></div>
+    <div class="card rv"><span class="num">Paso 3</span><h3>Recibes</h3><p>Tus créditos de plástico CSR26 llegan a tu cuenta: el recibo digital que certifica tu contribución real a retirar plástico del medio ambiente.</p></div>
   </div>
+  <p class="rv" style="color:var(--muted);font-size:14px;margin-top:28px;max-width:640px;margin-inline:auto"><i>«Un crédito de plástico es una unidad transferible que representa una cantidad determinada de residuos plásticos.»</i> — WWF <a class="src" href="https://www.worldwildlife.org/blogs/sustainability-works/posts/putting-the-credible-in-plastic-crediting" target="_blank" rel="noopener">Ver fuente ↗</a> · <a class="src" href="https://corsairgroup.com/csr-plastic-credit/" target="_blank" rel="noopener">Qué es CSR26 ↗</a></p>
 </div></section>
 
 <!-- POR QUÉ HOY -->
-<section><div class="wrap">
+<section style="background:var(--bg-2);border-block:1px solid var(--line)"><div class="wrap">
   <div class="head">
     <div><span class="eyebrow rv"><i></i>Por qué hoy y no dentro de un año</span>
     <h2 class="rv">Tres razones.<br><span class="accent">Una decisión.</span></h2></div>
   </div>
   <div class="cards">
-    <div class="card rv"><span class="num">01</span><h3>Precio actual</h3><p>Muy por debajo del valor real de mercado.</p></div>
-    <div class="card rv"><span class="num">02</span><h3>Hasta 7× más</h3><p>Es lo que ya cobra la competencia por lo mismo.</p></div>
-    <div class="card rv"><span class="num">03</span><h3>La ley llega</h3><p>Cuando sea obligatorio en todos los países, la demanda se multiplicará. Y el precio con ella.</p></div>
+    <div class="card rv"><span class="num">01</span><h3>Precio actual</h3><p>Hoy el servicio se ofrece por debajo del valor de mercado del crédito de plástico CSR26.</p></div>
+    <div class="card rv"><span class="num">02</span><h3>El precio se acerca</h3><p>El precio del crédito de plástico CSR26 se está acercando al de productos comparables del mercado.</p></div>
+    <div class="card rv"><span class="num">03</span><h3>La ley llega</h3><p>Se prevé que la demanda de créditos de plástico aumente a medida que se amplíen las exigencias normativas.</p><a class="src" href="#leyes">Ver las leyes ↑</a></div>
   </div>
+  <p class="center rv" style="margin-top:56px;font-family:var(--serif);font-size:clamp(24px,3vw,34px)">Cientos de empresas y miles de particulares ya han compensado su huella plástica con créditos de plástico CSR.</p>
   <div class="marquee"><div class="track">
-    <span>Marriott<em>·</em></span><span>Aeropuertos internacionales<em>·</em></span><span>Puertos deportivos<em>·</em></span><span>Hoteles<em>·</em></span><span>Celebridades<em>·</em></span><span>Clubes deportivos<em>·</em></span>
-    <span>Marriott<em>·</em></span><span>Aeropuertos internacionales<em>·</em></span><span>Puertos deportivos<em>·</em></span><span>Hoteles<em>·</em></span><span>Celebridades<em>·</em></span><span>Clubes deportivos<em>·</em></span>
+    <span>Diversey<em>·</em></span><span>JW Marriott<em>·</em></span><span>Novotel<em>·</em></span><span>Mercure<em>·</em></span><span>Holiday Inn<em>·</em></span><span>Grand Hyatt<em>·</em></span><span>Kempinski<em>·</em></span><span>Rosewood<em>·</em></span><span>Shangri-La<em>·</em></span><span>Michelin<em>·</em></span><span>Thai Union<em>·</em></span><span>Centara<em>·</em></span>
+    <span>Diversey<em>·</em></span><span>JW Marriott<em>·</em></span><span>Novotel<em>·</em></span><span>Mercure<em>·</em></span><span>Holiday Inn<em>·</em></span><span>Grand Hyatt<em>·</em></span><span>Kempinski<em>·</em></span><span>Rosewood<em>·</em></span><span>Shangri-La<em>·</em></span><span>Michelin<em>·</em></span><span>Thai Union<em>·</em></span><span>Centara<em>·</em></span>
   </div></div>
-  <p class="center" style="color:var(--muted);margin-top:20px;font-size:14px">Cientos de empresas ya lo están haciendo. Ahora mismo.</p>
-</div></section>
-
-<!-- COCA-COLA -->
-<section class="dark"><div class="wrap">
-  <div class="head">
-    <div><span class="eyebrow rv"><i></i>Un número que vuela la cabeza</span>
-    <h2 class="rv">La demanda <span class="accent">todavía no existe.</span></h2></div>
-    <p class="lead rv">Y eso es solo una marca. Si sumas ocho de las mayores empresas del mundo, la demanda supera los 70.000 millones de créditos.</p>
-  </div>
-  <div class="big">
-    <div class="card rv"><p>Coca-Cola, compensando la mitad de su plástico anual</p><div class="n">18.000M</div><p>créditos necesarios</p><div class="meter"><i class="a"></i></div></div>
-    <div class="card rv"><p>Todo lo generado por Corsair en seis años</p><div class="n accent">10.000M</div><p>créditos en total</p><div class="meter"><i class="b"></i></div></div>
-  </div>
+  <p class="center" style="margin-top:16px"><a class="src" href="https://inte.solenis.com/en/resources/news-releases/2024/diversey-a-solenis-company-and-corsair-group-international-sign-mou-to-advance-circular-economy-and-csr-plastic-credits-in-thailand/" target="_blank" rel="noopener">Ejemplo: acuerdo Diversey × Corsair Group International (2024) ↗</a></p>
 </div></section>
 
 <!-- SECTORES -->
 <section id="sectores"><div class="wrap center">
   <span class="eyebrow rv"><i></i>Tu lugar en la solución</span>
   <h2 class="rv">¿Cuál es <span class="accent">tu ola?</span></h2>
-  <p class="lead rv">Elige tu perfil. Te contamos exactamente cómo encajas.</p>
+  <p class="lead rv">Elige tu perfil. Mira el vídeo y descubre cómo encajas.</p>
 
   <div class="tabs" role="tablist">
-    <button class="tab" role="tab" aria-selected="true" data-t="s1">Hoteles, deporte y comercio</button>
+    <button class="tab" role="tab" aria-selected="true" data-t="s1">Compensa tu residuo plástico</button>
     <button class="tab" role="tab" aria-selected="false" data-t="s2">Particulares e inversores</button>
     <button class="tab" role="tab" aria-selected="false" data-t="s3">Pymes · Sello ESG</button>
-    <button class="tab" role="tab" aria-selected="false" data-t="s4">Emprendedores · Corsair Connect</button>
+    <button class="tab" role="tab" aria-selected="false" data-t="s4">Negocio Corsair Connect</button>
   </div>
 
   <div class="panel on" id="s1" style="text-align:left">
     <div class="card"><h3>Tu residuo puede ser <span class="accent">tu reputación.</span></h3>
-      <ul><li>Compensas tu huella de plástico con créditos certificados, según lo que tu negocio genera de verdad.</li><li>Recibes un certificado oficial y verificable para tu web, tu local y tus redes.</li><li>Tus clientes saben que, al elegirte, apoyan a un negocio que ya resolvió su parte.</li></ul>
+      <ul><li>Compensas tu huella con créditos de plástico certificados, según lo que tu negocio genera de verdad.</li><li>Recibes un certificado verificable para tu web, tu local y tus redes.</li><li>Tus clientes saben que, al elegirte, apoyan a un negocio que ya resolvió su parte.</li></ul>
       <a class="btn btn-blue" href="CAL_URL" target="_blank" rel="noopener">Agenda tu reunión</a></div>
-    <div class="card side"><div class="q">“Eso no se compra con publicidad. Se construye con hechos.”</div><small>Tu certificado. Tu diferencia. Tu reunión, hoy.</small></div>
+    <div class="pv"><video src="videos/video-1-1.mp4" poster="videos/portada-1-1.jpg" controls playsinline preload="none"></video></div>
   </div>
 
   <div class="panel" id="s2" style="text-align:left">
     <div class="card"><h3>Impacto real. <span class="accent">Retorno real.</span></h3>
-      <ul><li>Compensa tu propia huella personal con créditos de plástico.</li><li>O ve un paso más allá y participa en los proyectos que lo hacen posible.</li><li>Sistema certificado, con respaldo institucional y impacto medible.</li></ul>
+      <ul><li>Compensa tu propia huella personal con créditos de plástico CSR26.</li><li>O ve un paso más allá y participa en los proyectos que lo hacen posible.</li><li>Un proceso certificado y auditado, con impacto medible.</li></ul>
       <a class="btn btn-blue" href="CAL_URL" target="_blank" rel="noopener">Reserva tu reunión</a></div>
-    <div class="card side"><div class="q">“No necesitas ser una corporación para formar parte de la solución.”</div><small>¿Quieres ser de los que actúan, o de los que esperan?</small></div>
+    <div class="pv"><video src="videos/video-1-2.mp4" poster="videos/portada-1-2.jpg" controls playsinline preload="none"></video></div>
   </div>
 
   <div class="panel" id="s3" style="text-align:left">
     <div class="card"><h3>El estándar que viene, <span class="accent">hoy.</span></h3>
-      <ul><li>Certificamos tu empresa según el volumen real de plástico que genera o utiliza.</li><li>Paquetes adaptados a tu tamaño y sector, respaldados por ISCC, Control Union y los ODS de la ONU.</li><li>Muéstralo en tu web, licitaciones y propuestas comerciales.</li></ul>
+      <ul><li>Compensamos la huella de tu empresa según el volumen real de plástico que genera o utiliza.</li><li>Paquetes adaptados a tu tamaño y sector, con un proceso certificado ISCC y auditado por Control Union.</li><li>Muéstralo en tu web, licitaciones y propuestas comerciales.</li></ul>
       <a class="btn btn-blue" href="CAL_URL" target="_blank" rel="noopener">Agenda tu reunión</a></div>
-    <div class="card side"><div class="q">“Mientras otros hablan de sostenibilidad, tú ya la tendrás certificada.”</div><small>Certificado. Real. Verificable.</small></div>
+    <div class="pv"><video src="videos/video-1-3.mp4" poster="videos/portada-1-3.jpg" controls playsinline preload="none"></video></div>
   </div>
 
   <div class="panel" id="s4" style="text-align:left">
     <div class="card"><h3>No mires cómo otros lo construyen. <span class="accent">Constrúyelo tú.</span></h3>
-      <ul><li>Corsair Connect: una red internacional para ayudar a empresas y particulares a acceder a la solución.</li><li>Cuando tu equipo crece, tú creces. Comunidad, no competencia.</li><li>Una industria que va a crecer durante las próximas tres décadas.</li></ul>
+      <ul><li>Corsair Connect: una red internacional para ayudar a empresas y particulares a acceder a los créditos de plástico.</li><li>Cuando tu equipo crece, tú creces. Comunidad, no competencia.</li><li>Una industria que va a crecer durante las próximas tres décadas.</li></ul>
       <a class="btn btn-blue" href="MEET_URL" target="_blank" rel="noopener">Presentación online · Lunes [hora]</a></div>
-    <div class="card side"><div class="q">“Donde crece el problema, crece la industria que lo resuelve.”</div><small>El lunes te explicamos el modelo y cómo empezar.</small></div>
+    <div class="pv"><video src="videos/video-1-4.mp4" poster="videos/portada-1-4.jpg" controls playsinline preload="none"></video></div>
   </div>
 </div></section>
 
@@ -503,55 +617,50 @@
 <section class="dark final"><div class="wrap">
   <span class="eyebrow rv"><i></i>Esta ola está empezando ahora</span>
   <h2 class="rv">Hoy tú puedes ser<br><span class="accent">el protagonista</span></h2>
-  <p class="lead rv">La pregunta no es si esto va a pasar. Ya está pasando. La única pregunta es cuánto plástico quieres sacar del planeta… y cuánto de esta ola quieres aprovechar tú.</p>
+  <p class="lead rv">El planeta no necesita promesas, necesita acciones. ¿Cuánto plástico quieres retirar del medio ambiente?</p>
   <div class="cta-row rv">
-    <a href="#sectores" class="btn btn-blue">Quiero estar dentro</a>
+    <a href="#sectores" class="btn btn-blue">Quiero participar</a>
     <a href="#v" class="btn btn-ghost" onclick="playVideo()">Volver a ver el vídeo</a>
   </div>
 </div></section>
 
-<!-- REVISAR VÍDEOS (revisión interna, Fase 1) -->
-<section class="review" id="revisar"><div class="wrap center">
-  <span class="eyebrow rv"><i></i>Fase 1 · Vídeos de contacto</span>
-  <h2 class="rv">Revisar <span class="accent">vídeos</span></h2>
-  <p class="lead rv">Los 4 vídeos de la fase 1, uno para cada perfil. Míralos y dinos qué te parecen.</p>
-
-  <div class="vids">
-    <div class="vcard rv">
-      <video src="videos/video-1-1.mp4" poster="videos/portada-1-1.jpg" controls playsinline preload="none"></video>
-      <div class="info"><span class="code">VÍDEO 1A · SECTOR 1</span>
-        <h3>Deporte, hoteles y comercios</h3>
-        <p>Negocios que generan residuo cada día. Convertir ese residuo en su mejor argumento de marca.</p>
-        <div class="meta">“Tu residuo puede ser tu reputación.”</div></div>
-    </div>
-    <div class="vcard rv">
-      <video src="videos/video-1-2.mp4" poster="videos/portada-1-2.jpg" controls playsinline preload="none"></video>
-      <div class="info"><span class="code">VÍDEO 1B · SECTOR 2</span>
-        <h3>Particulares e inversores</h3>
-        <p>Personas sensibilizadas y pequeños inversores. Microplásticos en la sangre y gente normal invirtiendo en la solución.</p>
-        <div class="meta">“¿Quieres ser de los que actúan, o de los que esperan?”</div></div>
-    </div>
-    <div class="vcard rv">
-      <video src="videos/video-1-3.mp4" poster="videos/portada-1-3.jpg" controls playsinline preload="none"></video>
-      <div class="info"><span class="code">VÍDEO 1C · SECTOR 3</span>
-        <h3>Pymes · Sello verde ESG</h3>
-        <p>Empresas que necesitan un sello verde certificado antes de que la regulación lo exija.</p>
-        <div class="meta">“Certificado. Real. Verificable.”</div></div>
-    </div>
-    <div class="vcard rv">
-      <video src="videos/video-1-4.mp4" poster="videos/portada-1-4.jpg" controls playsinline preload="none"></video>
-      <div class="info"><span class="code">VÍDEO 1D · SECTOR 4</span>
-        <h3>Emprendedores · Corsair Connect</h3>
-        <p>Personas que quieren construir el negocio que resuelve el mayor problema ambiental de su generación.</p>
-        <div class="meta">“Donde crece el problema, crece la industria que lo resuelve.”</div></div>
-    </div>
-  </div>
-</div></section>
-
 <footer><div class="wrap">
-  <span>© 2026 CSR26 · Corsair Connect</span>
-  <p>La información de esta página es divulgativa y no constituye asesoramiento financiero. La evolución pasada de otros mercados (como el del carbono) no garantiza resultados futuros. Toda participación conlleva riesgos.</p>
+  <span>© 2026 CSR26 · Corsair Connect<br>
+    <a href="https://corsairgroup.com" target="_blank" rel="noopener">corsairgroup.com</a> ·
+    <a href="https://www.youtube.com/channel/UCo0mwBoHBJJOTbZxibsVTlQ" target="_blank" rel="noopener">YouTube</a> ·
+    <a href="https://www.instagram.com/corsair.international/" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://www.facebook.com/CorsairInternational" target="_blank" rel="noopener">Facebook</a></span>
+  <p>La información de esta página es divulgativa y no constituye asesoramiento financiero. La evolución pasada de otros mercados (como el de los créditos de carbono) no garantiza resultados futuros. Toda participación conlleva riesgos. <a onclick="legal.showModal()">Aviso legal y términos de uso</a></p>
 </div></footer>
+
+<!-- AVISO LEGAL: se muestra al entrar hasta que se acepta. Rellena los [CORCHETES]. -->
+<dialog id="legal" aria-labelledby="legal-t">
+  <div class="lh"><h3 id="legal-t">Antes de continuar</h3><p>Lee y acepta las condiciones de uso de esta web.</p></div>
+  <div class="lb">
+    <h4>1. Solo información, no asesoramiento</h4>
+    <p>Todo el contenido de esta web (textos, vídeos, gráficos y cifras) tiene carácter exclusivamente informativo y divulgativo. No constituye asesoramiento financiero, de inversión, fiscal ni jurídico, ni una recomendación personalizada.</p>
+    <h4>2. No es una oferta de inversión</h4>
+    <p>Nada de lo publicado aquí es una oferta, invitación o solicitud para comprar, vender o suscribir ningún producto o instrumento financiero. Los créditos de plástico no son instrumentos financieros regulados ni están supervisados por la CNMV ni por ninguna otra autoridad financiera.</p>
+    <h4>3. Riesgos y ausencia de garantías</h4>
+    <p>No se garantiza ninguna rentabilidad, revalorización ni liquidez. El valor de los créditos de plástico puede subir, bajar o perderse por completo. La evolución pasada de otros mercados, como el de créditos de carbono, no garantiza resultados futuros. Las proyecciones y estimaciones son orientativas y pueden no cumplirse.</p>
+    <h4>4. Exactitud de la información</h4>
+    <p>Las cifras proceden de fuentes públicas y de materiales del sector, y pueden contener errores, estar desactualizadas o simplificadas. Verifica siempre la información antes de tomar cualquier decisión y consulta con un asesor profesional independiente.</p>
+    <h4>5. Titular y relación con terceros</h4>
+    <p>Esta web la gestiona [NOMBRE / RAZÓN SOCIAL], NIF [NIF], contacto [EMAIL], como colaborador independiente. No es la web oficial de Corsair Group International ni de ninguna de las entidades mencionadas (ISCC, Control Union, Naciones Unidas, Shell, Marriott, etc.), que no patrocinan este contenido. Sus nombres, marcas e imágenes pertenecen a sus respectivos titulares y se citan solo con fines informativos.</p>
+    <h4>6. Responsabilidad</h4>
+    <p>Cualquier decisión que tomes a partir de esta información es tuya y bajo tu responsabilidad. El titular no responde de pérdidas o daños derivados del uso de esta web ni de los servicios de terceros enlazados (calendarios, videollamadas, etc.).</p>
+    <h4>7. Edad</h4>
+    <p>Esta web se dirige a personas mayores de 18 años.</p>
+    <h4>8. Privacidad y cookies</h4>
+    <p>Esta web no usa cookies de seguimiento ni publicidad. Solo guarda en tu navegador que has aceptado este aviso. Para mostrar las tipografías se cargan desde Google Fonts, lo que implica que Google recibe tu dirección IP. Si agendas una reunión, tus datos los trata el servicio que utilices (por ejemplo, Google Calendar) según su propia política.</p>
+    <h4>9. Legislación</h4>
+    <p>Estas condiciones se rigen por la legislación española, incluida la Ley 34/2002 (LSSI) y el Reglamento (UE) 2016/679 (RGPD).</p>
+  </div>
+  <div class="lf">
+    <label><input type="checkbox" id="legal-ok"> He leído y acepto el aviso legal. Entiendo que esto no es asesoramiento ni una oferta de inversión.</label>
+    <button class="btn btn-dark" id="legal-btn" disabled>Aceptar y continuar</button>
+  </div>
+</dialog>
 
 <script>
   // Vídeo: carga el MP4 (o cambia por iframe) al pulsar play
@@ -569,7 +678,7 @@
   // Tabs sectores
   document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
     document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
-    document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',p.id===t.dataset.t));
+    document.querySelectorAll('.panel').forEach(p=>{p.classList.toggle('on',p.id===t.dataset.t);if(p.id!==t.dataset.t)p.querySelectorAll('video').forEach(v=>v.pause())});
   });
   // Gráfico carbono: se dibuja de 2017 a 2026 + tooltip al tocar/pasar el ratón
   (()=>{
@@ -611,9 +720,18 @@
     svg.addEventListener('pointermove',tip);svg.addEventListener('pointerdown',tip);
     svg.addEventListener('pointerleave',()=>svg.classList.remove('hover'));
   })();
-  // Revisar vídeos: al reproducir uno, se pausan los demás
-  document.querySelectorAll('.vcard video').forEach(v=>v.addEventListener('play',()=>
-    document.querySelectorAll('.vcard video').forEach(o=>o!==v&&o.pause())));
+  // Aviso legal: se muestra hasta que se acepta (se recuerda en este navegador)
+  (()=>{
+    const K='csr26-legal-v1', ok=document.getElementById('legal-ok'), btn=document.getElementById('legal-btn');
+    let accepted=false; try{accepted=localStorage.getItem(K)==='1'}catch(e){}
+    legal.addEventListener('cancel',e=>{if(!accepted)e.preventDefault()}); // Esc no lo cierra sin aceptar
+    ok.onchange=()=>btn.disabled=!ok.checked;
+    btn.onclick=()=>{accepted=true;try{localStorage.setItem(K,'1')}catch(e){}legal.close()};
+    if(accepted){ok.checked=true;btn.disabled=false}else legal.showModal();
+  })();
+  // Vídeos por sector: al reproducir uno, se pausan los demás
+  const vids=document.querySelectorAll('video');
+  document.addEventListener('play',e=>vids.forEach(o=>o!==e.target&&o.pause()),true);
   // Abrir sector por URL: index.html#s3 (útil para enlazar desde cada vídeo de Fase 1)
   const h=location.hash.slice(1); const tb=document.querySelector('[data-t="'+h+'"]'); if(tb){tb.click();sectores.scrollIntoView()}
 </script>
