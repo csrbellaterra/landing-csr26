@@ -76,7 +76,10 @@
   .hero .video{margin-top:40px}
   .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
   #go:not([hidden]){animation:goin .7s cubic-bezier(.2,.7,.2,1)}
-  @keyframes goin{from{opacity:0;transform:translateY(16px)}}
+  @keyframes goin{from{opacity:0;transform:translateY(16px) scale(.9)}}
+  #go .btn{height:68px;padding:0 40px;font-size:19px;color:#fff;background:linear-gradient(114.5deg,#0f5efe,#0d48c8 45%,#2b61d9 70%,#0f5efe);background-size:200%;animation:pan 3s linear infinite alternate,glow 2s ease-in-out infinite}
+  #go .btn svg{width:20px;height:20px}
+  @keyframes glow{0%,100%{box-shadow:0 10px 30px -6px rgba(15,94,254,.55),0 0 0 0 rgba(15,94,254,.45)}50%{box-shadow:0 10px 30px -6px rgba(15,94,254,.55),0 0 0 14px rgba(15,94,254,0)}}
 
   /* ---- video ---- */
   .video{margin:64px auto 0;max-width:1040px;aspect-ratio:16/9;border-radius:28px;overflow:hidden;position:relative;
@@ -670,9 +673,9 @@
     if(v.querySelector('video,iframe')) return;
     v.innerHTML='<video src="'+v.dataset.src+'" controls autoplay playsinline></video>';
     const m=v.querySelector('video');
-    m.ontimeupdate=()=>{if(m.duration&&m.currentTime>m.duration-30)showGo()};
+    m.ontimeupdate=()=>{if(m.currentTime>=180)showGo()}; // a los 3 min
   }
-  // Botón tras el vídeo: aparece al final (y ya siempre en este navegador)
+  // Botón tras el vídeo: aparece a los 3 min (y ya siempre en este navegador)
   function showGo(){go.hidden=false;try{localStorage.setItem('csr26-visto','1')}catch(e){}}
   try{if(localStorage.getItem('csr26-visto'))go.hidden=false}catch(e){}
   // Nav con borde al hacer scroll
